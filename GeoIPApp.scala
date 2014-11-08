@@ -54,6 +54,7 @@ import spray.can.Http
 import akka.pattern.ask
 import akka.util.Timeout
 import scala.concurrent.duration._
+import util.Properties
 
 object GeoIPApp extends App {
   implicit val system = ActorSystem("system-actor")
@@ -61,7 +62,9 @@ object GeoIPApp extends App {
   implicit val timeout = Timeout(5.seconds)
 
   val host = "0.0.0.0" 
-  val port = Option(System.getenv("PORT")).getOrElse("8080").toInt
+  // val port = Option(System.getenv("PORT")).getOrElse("8080").toInt
+  val port = Properties.envOrElse("PORT", "8080").toInt
+  println("Starting on port: "+port)
 
   IO(Http) ? Http.Bind(service, interface = host, port = port)
 }
