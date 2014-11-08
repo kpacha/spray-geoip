@@ -25,7 +25,7 @@ trait GeoIPService extends HttpService {
 
   val ipLookups = {
     println("ipLookups instantion. Reading data from /tmp/GeoLiteCity.dat")
-    IpLookups(geoFile = Some("/tmp/GeoLiteCity.dat"), ispFile = None,
+    IpLookups(geoFile = Some("GeoLiteCity.dat"), ispFile = None,
               orgFile = None, domainFile = None, memCache = true, lruCache = 20000)
   }
 
