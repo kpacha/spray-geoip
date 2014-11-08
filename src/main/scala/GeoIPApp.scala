@@ -24,14 +24,19 @@ import spray.routing.directives.CachingDirectives._
 trait GeoIPService extends HttpService {
 
   val ipLookups = {
-    println("ipLookups instantion. Reading data from /tmp/GeoLiteCity.dat")
-    IpLookups(geoFile = Some("GeoLiteCity.dat"), ispFile = None,
+    println("ipLookups instantion. Reading data from src/main/resources/GeoLiteCity.dat")
+    IpLookups(geoFile = Some("src/main/resources/GeoLiteCity.dat"), ispFile = None,
               orgFile = None, domainFile = None, memCache = true, lruCache = 20000)
   }
 
   val simpleCache = routeCache(maxCapacity = 1000, timeToIdle = Duration("30 min"))
 
   val myRoute =
+    path("") {
+      cache(simpleCache) {
+        getFromResource("index.html")
+      }
+    } ~
     path("geoip" / """\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b""".r) { ip =>
       get {
         cache(simpleCache) {
