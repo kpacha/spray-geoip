@@ -66,8 +66,7 @@ object GeoIPApp extends App {
   val service = system.actorOf(Props[GeoIPServiceActor], "geoip-service")
   implicit val timeout = Timeout(5.seconds)
 
-  val host = "0.0.0.0" 
-  // val port = Option(System.getenv("PORT")).getOrElse("8080").toInt
+  val host = "0.0.0.0"
   val port = Properties.envOrElse("PORT", "8080").toInt
   println("Starting on port: "+port)
 
