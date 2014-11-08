@@ -3,7 +3,7 @@ import NativePackagerKeys._
 
 packageArchetype.java_application
 
-name := """akka-geoip"""
+name := """spray-geoip"""
 
 version := "0.0.1-SNAPSHOT"
 
