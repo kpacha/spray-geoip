@@ -1,4 +1,9 @@
-name := "akka-geoip"
+import com.typesafe.sbt.SbtNativePackager._
+import NativePackagerKeys._
+
+packageArchetype.java_application
+
+name := """akka-geoip"""
 
 version := "0.0.1-SNAPSHOT"
 

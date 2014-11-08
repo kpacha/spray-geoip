@@ -59,5 +59,9 @@ object GeoIPApp extends App {
   implicit val system = ActorSystem("system-actor")
   val service = system.actorOf(Props[GeoIPServiceActor], "geoip-service")
   implicit val timeout = Timeout(5.seconds)
-  IO(Http) ? Http.Bind(service, interface = "localhost", port = 8080)
+
+  val host = "0.0.0.0" 
+  val port = Option(System.getenv("PORT")).getOrElse("8080").toInt
+
+  IO(Http) ? Http.Bind(service, interface = host, port = port)
 }
