@@ -18,9 +18,9 @@ This project runs powered by:
 * [snowplow/scala-maxmind-iplookups](https://github.com/snowplow/scala-maxmind-iplookups)
 * [MaxMind GeoLite data](http://maxmind.com)
 
-##Instal
+##Install
 
-Clone the repo
+After checking the project requirements, just clone the repo:
 
 	$ git clone https://github.com/kpacha/spray-geoip.git
 	$ cd spray-geoip
@@ -76,4 +76,4 @@ Compile, package and launch the project
 
 Read the (official doc)[https://devcenter.heroku.com/articles/getting-started-with-scala#introduction]
 
-A live demo is available at [http://damp-earth-2108.herokuapp.com/]
+A live demo is available at http://damp-earth-2108.herokuapp.com/
