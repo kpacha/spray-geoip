@@ -24,7 +24,7 @@ import spray.routing.directives.CachingDirectives._
 trait GeoIPService extends HttpService {
 
   val ipLookups = {
-    println("ipLookups instantion. Reading data from src/main/resources/GeoLiteCity.dat")
+    println("Creating ipLookups instance. Reading data from src/main/resources/GeoLiteCity.dat")
     IpLookups(geoFile = Some("src/main/resources/GeoLiteCity.dat"), ispFile = None,
               orgFile = None, domainFile = None, memCache = true, lruCache = 20000)
   }
@@ -68,7 +68,7 @@ object GeoIPApp extends App {
 
   val host = "0.0.0.0"
   val port = Properties.envOrElse("PORT", "8080").toInt
-  println("Starting on port: "+port)
+  println("Starting GeoIPApp server. Listening on port: " + port)
 
   IO(Http) ? Http.Bind(service, interface = host, port = port)
 }
